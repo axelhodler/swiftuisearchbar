@@ -10,7 +10,9 @@ struct ContentView: View {
             VStack {
                 SearchBar(text: $searchTerm)
                 List {
-                    ForEach(self.cars, id: \.self) { car in
+                    ForEach(self.cars.filter {
+                        self.searchTerm.isEmpty ? true : $0.contains(self.searchTerm)
+                    }, id: \.self) { car in
                         Text(car)
                     }
                 }.navigationBarTitle(Text("Cars"))
