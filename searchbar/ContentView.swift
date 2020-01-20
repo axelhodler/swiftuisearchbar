@@ -11,7 +11,7 @@ struct ContentView: View {
                 SearchBar(text: $searchTerm)
                 List {
                     ForEach(self.cars.filter {
-                        self.searchTerm.isEmpty ? true : $0.contains(self.searchTerm)
+                        self.searchTerm.isEmpty ? true : $0.lowercased().contains(self.searchTerm.lowercased())
                     }, id: \.self) { car in
                         Text(car)
                     }
