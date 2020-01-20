@@ -1,16 +1,16 @@
-//
-//  ContentView.swift
-//  searchbar
-//
-//  Created by DevPool04 on 20.01.20.
-//  Copyright © 2020 Axel Hodler. All rights reserved.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    let cars = ["Subaru WRX", "Tesla Model 3", "Porsche 911", "Renault Zoe", "DeLorean"]
+
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            List {
+                ForEach(self.cars, id: \.self) { car in
+                    Text(car)
+                }
+            }.navigationBarTitle(Text("Cars"))
+        }
     }
 }
 
