@@ -8,7 +8,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(text: $searchTerm)
+                SearchBar(text: $searchTerm, placeholder: "Search")
                 List {
                     ForEach(self.cars.filter {
                         self.searchTerm.isEmpty ? true : $0.lowercased().contains(self.searchTerm.lowercased())
@@ -24,6 +24,7 @@ struct ContentView: View {
 struct SearchBar: UIViewRepresentable {
 
     @Binding var text: String
+    var placeholder: String
 
     class Coordinator: NSObject, UISearchBarDelegate {
 
@@ -45,7 +46,7 @@ struct SearchBar: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = context.coordinator
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = placeholder
         searchBar.searchBarStyle = .minimal
         return searchBar
     }
