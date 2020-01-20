@@ -1,9 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    let cars = ["Subaru WRX", "Tesla Model 3", "Porsche 911", "Renault Zoe", "DeLorean"]
+    let cars = ["Subaru WRX", "Tesla Model 3", "Porsche 911", "Renault Zoe", "DeLorean", "Mitsubishi Lancer", "Audi RS6"]
     @State private var searchTerm : String = ""
-
 
     var body: some View {
         NavigationView {
@@ -48,6 +47,7 @@ struct SearchBar: UIViewRepresentable {
         searchBar.delegate = context.coordinator
         searchBar.placeholder = placeholder
         searchBar.searchBarStyle = .minimal
+        searchBar.autocapitalizationType = .none
         return searchBar
     }
 
