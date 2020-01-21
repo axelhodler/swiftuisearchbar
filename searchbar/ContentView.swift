@@ -2,15 +2,15 @@ import SwiftUI
 
 struct ContentView: View {
     let cars = ["Subaru WRX", "Tesla Model 3", "Porsche 911", "Renault Zoe", "DeLorean", "Mitsubishi Lancer", "Audi RS6"]
-    @State private var searchTerm : String = ""
+    @State private var searchText : String = ""
 
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(text: $searchTerm, placeholder: "Search")
+                SearchBar(text: $searchText, placeholder: "Search")
                 List {
                     ForEach(self.cars.filter {
-                        self.searchTerm.isEmpty ? true : $0.lowercased().contains(self.searchTerm.lowercased())
+                        self.searchText.isEmpty ? true : $0.lowercased().contains(self.searchText.lowercased())
                     }, id: \.self) { car in
                         Text(car)
                     }
