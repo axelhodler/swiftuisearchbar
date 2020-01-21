@@ -7,7 +7,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(text: $searchText, placeholder: "Search")
+                SearchBar(text: $searchText, placeholder: "Search cars")
                 List {
                     ForEach(self.cars.filter {
                         self.searchText.isEmpty ? true : $0.lowercased().contains(self.searchText.lowercased())
